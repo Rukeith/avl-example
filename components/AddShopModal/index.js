@@ -37,7 +37,7 @@ const create_picker = selectTime => {
   return day_picker;
 };
 
-const App = ({ modal, save, selectTime, toggle }) => (
+const App = ({ modal, shop_work, saveNewShop, selectTime, toggle }) => (
   <div className='add-shop-modal'>
     <Button color='primary' onClick={() => toggle(!modal)}>
       Add
@@ -54,7 +54,7 @@ const App = ({ modal, save, selectTime, toggle }) => (
         {create_picker(selectTime)}
       </ModalBody>
       <ModalFooter>
-        <Button color='primary' onClick={() => save(!modal)}>
+        <Button color='primary' onClick={() => saveNewShop(shop_work, !modal)}>
           Save
         </Button>{' '}
         <Button color='secondary' onClick={() => toggle(!modal)}>
@@ -71,7 +71,7 @@ App.defaultProps = {
 
 App.propTypes = {
   toggle: PropTypes.func.isRequired,
-  save: PropTypes.func.isRequired,
+  saveNewShop: PropTypes.func.isRequired,
   selectTime: PropTypes.func.isRequired,
   modal: PropTypes.bool.isRequired
 };

@@ -7,6 +7,15 @@ export const toggle = modal => ({
   modal
 });
 
+export const saveNewShop = (shop_work, modal) => {
+  console.log('shop_work', shop_work);
+  console.log('modal', modal);
+  return {
+    type: TOGGLE_ADD_SHOP_MODAL,
+    modal
+  };
+};
+
 export const selectTime = (value, day, type) => {
   if (type === 'open') {
     return {
