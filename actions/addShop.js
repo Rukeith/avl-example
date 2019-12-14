@@ -8,9 +8,17 @@ export const toggle = modal => ({
 });
 
 export const selectTime = (value, day, type) => {
+  if (type === 'open') {
+    return {
+      type: SELECT_TIME,
+      open_time: value,
+      shop_work_day: day
+    };
+  }
+
   return {
     type: SELECT_TIME,
-    shop_time: value,
-    shop_day: day
+    close_time: value,
+    shop_work_day: day
   };
 };

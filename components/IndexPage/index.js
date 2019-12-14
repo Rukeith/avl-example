@@ -2,9 +2,7 @@ import PropTypes from 'prop-types';
 import FacebookLogin from 'react-facebook-login';
 import './style.scss';
 
-const IndexPage = ({
-  login,
-}) => (
+const IndexPage = ({ login }) => (
   <main id='login-page'>
     <h1>Admin Login</h1>
     <h3>Welcome to share your thought. Make a different.</h3>
@@ -19,7 +17,7 @@ const IndexPage = ({
 );
 
 IndexPage.propTypes = {
-  login: PropTypes.func.isRequired,
+  login: PropTypes.func.isRequired
 };
 
 export default IndexPage;

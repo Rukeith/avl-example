@@ -1,20 +1,25 @@
-import { TOGGLE_ADD_SHOP_MODAL } from '../actions/addShop';
+import { TOGGLE_ADD_SHOP_MODAL, SELECT_TIME } from '../actions/addShop';
 
 const initialState = {
-  modal: false
+  modal: false,
+  shop_work: {}
 };
 
 export default (state = initialState, action) => {
-  const { type, modal } = action;
-  console.log('reducer type =>', type);
-  console.log('reducer state =>', state);
-  console.log('reducer modal =>', modal);
+  const { type, modal, shop_work_day, open_time, close_time } = action;
 
   switch (type) {
     case TOGGLE_ADD_SHOP_MODAL:
-      const kk = Object.assign({}, state, { modal });
-      console.log('kkk', kk);
-      return kk
+      return Object.assign({}, state, { modal });
+    case SELECT_TIME:
+      const shop_work = {};
+      shop_work[shop_work_day] = {};
+      if (close_time) {
+        shop_work[shop_work_day].close_time = close_time;
+      } else if (open_time) {
+        shop_work[shop_work_day].open_time = open_time;
+      }
+      return Object.assign({}, state, { shop_work });
     default:
       return state;
   }

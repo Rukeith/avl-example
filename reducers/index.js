@@ -4,7 +4,7 @@ import addShop from './addShop';
 
 const rootReducer = combineReducers({
   login,
-  addShop,
+  addShop
 });
 
 export default rootReducer;

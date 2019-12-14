@@ -12,6 +12,31 @@ import {
 } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+const create_picker = selectTime => {
+  const day_picker = [];
+  for (let day = 1; day < 8; day++) {
+    day_picker.push(
+      <div key={day}>
+        <label
+          htmlFor={`booking-time-${day}`}>{`選擇週${day}營業時間: `}</label>
+        <input
+          type='time'
+          onChange={event => selectTime(event.target.value, day, 'open')}
+          id={`booking-time-${day}-start`}
+          name={`booking-time-${day}`}
+        />
+        <input
+          type='time'
+          onChange={event => selectTime(event.target.value, day, 'close')}
+          id={`booking-time-${day}-end`}
+          name={`booking-time-${day}`}
+        />
+      </div>
+    );
+  }
+  return day_picker;
+};
+
 const App = ({ modal, save, selectTime, toggle }) => (
   <div className='add-shop-modal'>
     <Button color='primary' onClick={() => toggle(!modal)}>
@@ -26,111 +51,7 @@ const App = ({ modal, save, selectTime, toggle }) => (
           </InputGroupAddon>
           <Input />
         </InputGroup>
-        <div>
-          <label for='booking-time-1'>選擇週一營業時間: </label>
-          <input
-            type='time'
-            onChange={event => selectTime(event.target.value)}
-            id='booking-time-1-start'
-            name='booking-time-1'
-          />
-          <input
-            type='time'
-            onChange={event => selectTime(event.target.value)}
-            id='booking-time-1-end'
-            name='booking-time-1'
-          />
-        </div>
-        <div>
-          <label for='booking-time-2'>選擇週二營業時間: </label>
-          <input
-            type='time'
-            onChange={event => selectTime(event.target.value)}
-            id='booking-time-2-start'
-            name='booking-time-2'
-          />
-          <input
-            type='time'
-            onChange={event => selectTime(event.target.value)}
-            id='booking-time-2-end'
-            name='booking-time-2'
-          />
-        </div>
-        <div>
-          <label for='booking-time-3'>選擇週三營業時間: </label>
-          <input
-            type='time'
-            onChange={event => selectTime(event.target.value)}
-            id='booking-time-3-start'
-            name='booking-time-3'
-          />
-          <input
-            type='time'
-            onChange={event => selectTime(event.target.value)}
-            id='booking-time-3-end'
-            name='booking-time-3'
-          />
-        </div>
-        <div>
-          <label for='booking-time-4'>選擇週四營業時間: </label>
-          <input
-            type='time'
-            onChange={event => selectTime(event.target.value)}
-            id='booking-time-4-start'
-            name='booking-time-4'
-          />
-          <input
-            type='time'
-            onChange={event => selectTime(event.target.value)}
-            id='booking-time-4-end'
-            name='booking-time-4'
-          />
-        </div>
-        <div>
-          <label for='booking-time-5'>選擇週五營業時間: </label>
-          <input
-            type='time'
-            onChange={event => selectTime(event.target.value)}
-            id='booking-time-5-start'
-            name='booking-time-5'
-          />
-          <input
-            type='time'
-            onChange={event => selectTime(event.target.value)}
-            id='booking-time-5-end'
-            name='booking-time-5'
-          />
-        </div>
-        <div>
-          <label for='booking-time-6'>選擇週六營業時間: </label>
-          <input
-            type='time'
-            onChange={event => selectTime(event.target.value)}
-            id='booking-time-6-start'
-            name='booking-time-6'
-          />
-          <input
-            type='time'
-            onChange={event => selectTime(event.target.value)}
-            id='booking-time-6-end'
-            name='booking-time-6'
-          />
-        </div>
-        <div>
-          <label for='booking-time-7'>選擇週日營業時間: </label>
-          <input
-            type='time'
-            onChange={event => selectTime(event.target.value)}
-            id='booking-time-7-start'
-            name='booking-time-7'
-          />
-          <input
-            type='time'
-            onChange={event => selectTime(event.target.value)}
-            id='booking-time-7-end'
-            name='booking-time-7'
-          />
-        </div>
+        {create_picker(selectTime)}
       </ModalBody>
       <ModalFooter>
         <Button color='primary' onClick={() => save(!modal)}>
